@@ -1,0 +1,31 @@
+# Build artifacts
+*.obj
+*.o
+*.pdb
+*.ilk
+*.iobj
+*.ipdb
+*.exe
+
+# Runtime data files (large binaries generated at runtime)
+*.bin
+
+# Keep the ALP SDK DLL tracked (required dependency, not buildable from source)
+!lib/x64/alpD41.dll
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.ncb
+*.sdf
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
