@@ -5,10 +5,12 @@ neuroscience experiments. Communicates with a Python orchestration layer via Win
 
 ## Prerequisites
 
-1. **Visual Studio Build Tools 2017+** (or full Visual Studio)
-   - Install with the **"Desktop development with C++"** workload
-   - This provides `cl.exe` (C++ compiler) and the Windows SDK
-   - Download: https://visualstudio.microsoft.com/downloads/ (scroll to "Build Tools")
+1. **Visual Studio Build Tools 2022** (lightweight, no IDE needed)
+   - Download "Build Tools for Visual Studio 2022" from https://visualstudio.microsoft.com/downloads/
+     (scroll down to "Tools for Visual Studio" section)
+   - In the installer, select the **"Desktop development with C++"** workload
+   - This provides `cl.exe` (C++ compiler), the linker, and the Windows SDK (~2-4 GB)
+   - Full Visual Studio is NOT required — Build Tools alone are sufficient
 
 2. **Windows 10 SDK** (included with the C++ workload above)
 
@@ -63,7 +65,7 @@ python tools\example_python_client.py
 
 | Error | Solution |
 |-------|----------|
-| `cl.exe not found` | Install Visual Studio Build Tools with C++ workload |
+| `cl.exe not found` | Install "Build Tools for Visual Studio 2022" with "Desktop development with C++" workload |
 | `alpD41.lib not found` | Verify `lib\x64\alpD41.lib` exists |
 | `ALP_NOT_ONLINE` (runtime) | DMD hardware not connected or driver not installed |
 | `Failed to open initial frame file` | Run `python tools\create_initial_frame.py` first |

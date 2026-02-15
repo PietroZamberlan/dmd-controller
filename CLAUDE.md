@@ -267,8 +267,10 @@ RETRY_DELAY_MS = 40           // Wait between retries
 ## Build Instructions
 
 ### Prerequisites
-- **Visual Studio Build Tools 2017+** (or full VS) with "Desktop development with C++" workload
-- **Windows 10 SDK** (for Windows.h, named pipes)
+- **Visual Studio Build Tools 2022** (lightweight, no IDE needed — ~2-4 GB)
+  - Download "Build Tools for Visual Studio 2022" and select "Desktop development with C++" workload
+  - This provides `cl.exe`, the linker, and the Windows 10 SDK
+  - Older versions (2019, 2017) also work — the build script auto-detects
 - The ALP SDK files are already included in `lib/` and `inc/`
 
 ### Building
