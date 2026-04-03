@@ -27,15 +27,15 @@ FRAME_HEIGHT = 864
 nb_perts = 2000
 n_frame_per_pert = 8
 pert_val = 0.15
-new_shape = (216, 216)
+new_shape = (432, 432)
 n_grey_frames = 16
 
 
 def load_source_videos():
     video_source_folder = os.path.join(_REPO_DIR, "source_videos")
-    gm_raw = np.load(os.path.join(video_source_folder, "global_motion.npy"))
-    bar_raw = np.load(os.path.join(video_source_folder, "bar_video.npy"))
-    pert_raw = np.load(os.path.join(video_source_folder, "pert_video.npy"))
+    gm_raw = np.load(os.path.join(video_source_folder, "free_moving_10_center_crop_40Hz.npy")) / 255
+    bar_raw = np.load(os.path.join(video_source_folder, "bar_video_speed_840.npy"))
+    pert_raw = np.load(os.path.join(video_source_folder, "frames_size_432_speed_1296_o_size_199.5_40_Hz_405_s_colored.npy"))
 
     def downsample(vid):
         return np.array(
@@ -51,8 +51,8 @@ def load_source_videos():
     return [downsample(gm_raw), downsample(bar_raw)], downsample(pert_raw)
 
 
-def prepare_frame_for_dmd(frame_216):
-    frame_uint8 = (np.clip(frame_216, 0, 1) * 255).astype(np.uint8)
+def prepare_frame_for_dmd(frame_432):
+    frame_uint8 = (np.clip(frame_432, 0, 1) * 255).astype(np.uint8)
     canvas = np.full((FRAME_HEIGHT, FRAME_WIDTH), 127, dtype=np.uint8)
     y_off = (FRAME_HEIGHT - new_shape[1]) // 2
     x_off = (FRAME_WIDTH - new_shape[0]) // 2
@@ -132,8 +132,8 @@ def main():
         return
 
     try:
-        grey_frame_216 = np.ones(new_shape, dtype=np.float32) * 0.5
-        grey_canvas = prepare_frame_for_dmd(grey_frame_216)
+        grey_frame_432 = np.ones(new_shape, dtype=np.float32) * 0.5
+        grey_canvas = prepare_frame_for_dmd(grey_frame_432)
 
         for i, trial in enumerate(trial_queue):
             print(f"[{i+1}/{len(trial_queue)}] Running Trial {trial['meta_id']}")
@@ -150,8 +150,8 @@ def main():
             pert_slice = (ds_pert_video[p_start:p_end] - 0.5) * (2 * pert_val)
 
             for t in range(len(base_vid)):
-                current_frame_216 = base_vid[t] + pert_slice[t]
-                dmd_canvas = prepare_frame_for_dmd(current_frame_216)
+                current_frame_432 = base_vid[t] + pert_slice[t]
+                dmd_canvas = prepare_frame_for_dmd(current_frame_432)
                 write_to_bin(dmd_canvas, FRAME_FILE_PATH)
                 send_command(handle, "SHOW_FRAME")
 
