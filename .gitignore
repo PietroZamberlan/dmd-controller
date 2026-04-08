@@ -25,6 +25,9 @@ __pycache__/
 *.pyc
 *.pyo
 
+# Claude Code
+.claude/
+
 # OS
 Thumbs.db
 desktop.ini

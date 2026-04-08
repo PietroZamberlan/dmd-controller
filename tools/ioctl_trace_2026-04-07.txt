@@ -1,0 +1,425 @@
+DMD DIAGNOSTIC TOOL v4 (with IOCTL tracing)
+=============================================
+=== TRACED AlpDevAlloc ===
+  Hooking DeviceIoControl to intercept USB traffic...
+  alpD41.dll loaded at: 0x181000000
+  Hooked DeviceIoControl in KERNEL32.dll IAT
+
+  Calling AlpDevAlloc(ALP_DEFAULT, ALP_DEFAULT)...
+  --- DeviceIoControl trace begins ---
+  IOCTL #1: code=0x804620B0 inSize=   0 outSize=   0 -> FAIL returned=0 err=122
+  IOCTL #2: code=0x804620B8 inSize=   6 outSize=   1 -> OK returned=1
+         IN:  00 00 00 01 00 00 
+         OUT: 10 
+  IOCTL #3: code=0x80462020 inSize=   4 outSize=   2 -> OK returned=2
+         IN:  01 00 00 00 
+         OUT: 01 04 
+  IOCTL #4: code=0x80462020 inSize=   4 outSize=  18 -> OK returned=14
+         IN:  02 00 00 00 
+         OUT: 53 4E 5F 30 34 5F 30 31 5F 31 36 38 39 00 
+  IOCTL #5: code=0x804623B2 inSize=   4 outSize=   2 -> OK returned=0
+         IN:  06 00 02 00 
+  IOCTL #6: code=0x804620B0 inSize=   0 outSize=   0 -> FAIL returned=0 err=122
+  IOCTL #7: code=0x804620B8 inSize=   6 outSize=   1 -> OK returned=1
+         IN:  00 00 00 01 00 00 
+         OUT: 10 
+  IOCTL #8: code=0x804620B0 inSize=   0 outSize=   0 -> FAIL returned=0 err=122
+  IOCTL #9: code=0x804620B8 inSize=   6 outSize=   1 -> OK returned=1
+         IN:  00 00 00 01 00 00 
+         OUT: 10 
+  IOCTL #10: code=0x8046200C inSize=   0 outSize=   1 -> OK returned=1
+         OUT: AF 
+  IOCTL #11: code=0x80462048 inSize=   2 outSize=   0 -> OK returned=0
+         IN:  01 00 
+  IOCTL #12: code=0x80462004 inSize=   0 outSize=   0 -> OK returned=1
+  IOCTL #13: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #14: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #15: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #16: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #17: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #18: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #19: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #20: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #21: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #22: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #23: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #24: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #25: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #26: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #27: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #28: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #29: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #30: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #31: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #32: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #33: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #34: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #35: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #36: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #37: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #38: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #39: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #40: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #41: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #42: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #43: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #44: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #45: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #46: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #47: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #48: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #49: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #50: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #51: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #52: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #53: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #54: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #55: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #56: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #57: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #58: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #59: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #60: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #61: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #62: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #63: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #64: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #65: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #66: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #67: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #68: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #69: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #70: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #71: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #72: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #73: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #74: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #75: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #76: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #77: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #78: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #79: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #80: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #81: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #82: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #83: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #84: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #85: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #86: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #87: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #88: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #89: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #90: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #91: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #92: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #93: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #94: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #95: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #96: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #97: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #98: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #99: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #100: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #101: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #102: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #103: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #104: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #105: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #106: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #107: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #108: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #109: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #110: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #111: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #112: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #113: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #114: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #115: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #116: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #117: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #118: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #119: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #120: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #121: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #122: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #123: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #124: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #125: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #126: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #127: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #128: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #129: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #130: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #131: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #132: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #133: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #134: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #135: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #136: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #137: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #138: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #139: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #140: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #141: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #142: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #143: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #144: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #145: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #146: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #147: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #148: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #149: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #150: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #151: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #152: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #153: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #154: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #155: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #156: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #157: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #158: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #159: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #160: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #161: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #162: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #163: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #164: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #165: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #166: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #167: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #168: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #169: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #170: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #171: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #172: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #173: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #174: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #175: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #176: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #177: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #178: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #179: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #180: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #181: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #182: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #183: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #184: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #185: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #186: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #187: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #188: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #189: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #190: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #191: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #192: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #193: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #194: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #195: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #196: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #197: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #198: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #199: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #200: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #201: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #202: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #203: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #204: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #205: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #206: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #207: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #208: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #209: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #210: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #211: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #212: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #213: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #214: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #215: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #216: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #217: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #218: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #219: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #220: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #221: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #222: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #223: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #224: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #225: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #226: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #227: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #228: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #229: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #230: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #231: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #232: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #233: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #234: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #235: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #236: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #237: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #238: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #239: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #240: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #241: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #242: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #243: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #244: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #245: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #246: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #247: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #248: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #249: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #250: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #251: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #252: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #253: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #254: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #255: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #256: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #257: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #258: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #259: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #260: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #261: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #262: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #263: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #264: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #265: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #266: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #267: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #268: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #269: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #270: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #271: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #272: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #273: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #274: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #275: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #276: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #277: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #278: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #279: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #280: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #281: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #282: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #283: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #284: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #285: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #286: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #287: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #288: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #289: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #290: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #291: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #292: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #293: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #294: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #295: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #296: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #297: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #298: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #299: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #300: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #301: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #302: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #303: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #304: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #305: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #306: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #307: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #308: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #309: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #310: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #311: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #312: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #313: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #314: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #315: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #316: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #317: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #318: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #319: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #320: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #321: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #322: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #323: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #324: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #325: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #326: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #327: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #328: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #329: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #330: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #331: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #332: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #333: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #334: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #335: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #336: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #337: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #338: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #339: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #340: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #341: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #342: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #343: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #344: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #345: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #346: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #347: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #348: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #349: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #350: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #351: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #352: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #353: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #354: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #355: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #356: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #357: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #358: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #359: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #360: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #361: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #362: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #363: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #364: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #365: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #366: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #367: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #368: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #369: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #370: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #371: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #372: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #373: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #374: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #375: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #376: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #377: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #378: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #379: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #380: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #381: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #382: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #383: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #384: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #385: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #386: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #387: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #388: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #389: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #390: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #391: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #392: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #393: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #394: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #395: code=0x80462018 inSize= 876 outSize=   0 -> OK returned=872
+  IOCTL #396: code=0x80462018 inSize=4100 outSize=   0 -> OK returned=4096
+  IOCTL #397: code=0x8046200C inSize=   0 outSize=   1 -> OK returned=1
+         OUT: AE 
+  IOCTL #398: code=0x80462048 inSize=   2 outSize=   0 -> OK returned=0
+         IN:  01 01 
+  --- DeviceIoControl trace ends ---
+  Total IOCTLs: 398
+  AlpDevAlloc returned: 1010 = ALP_ERROR_INIT
