@@ -46,10 +46,14 @@ dmd-controller/
 ├── bin/x64/                  # Build output directory (gitignored except .gitkeep)
 │   └── .gitkeep
 │
-└── tools/                    # Python helper scripts
-    ├── example_python_client.py   # Demo: connect via pipe, send commands
-    ├── create_initial_frame.py    # Creates initial current_frame.bin for startup
-    └── inspect_frame_header.py    # Reads and validates frame file headers
+├── docs/
+│   └── DMD_DEBUG_GUIDE.md   # Comprehensive DMD debugging guide (all levels)
+│
+├── tools/                    # Helper scripts and diagnostic tools
+│   ├── dmd_diagnose.cpp      # C++ DMD diagnostic tool (USB probe, IOCTL tracing)
+│   ├── example_python_client.py   # Demo: connect via pipe, send commands
+│   ├── create_initial_frame.py    # Creates initial current_frame.bin for startup
+│   └── inspect_frame_header.py    # Reads and validates frame file headers
 ```
 
 ## Two Operating Modes
@@ -348,3 +352,30 @@ unversioned folder containing the original Visual Studio solution. The original 
 contained legacy projects (checkerboard, film, ultimate_code) that are not included here.
 
 The original `cppalp-backup\` folder is preserved untouched.
+
+## Troubleshooting / DMD Not Initializing
+
+If `AlpDevAlloc()` fails (especially error 1010 = ALP_ERROR_INIT), follow the
+step-by-step diagnostic procedure in **`docs/DMD_DEBUG_GUIDE.md`**.
+
+Quick start:
+```bash
+# Safe USB probe (doesn't touch the device):
+.\bin\x64\dmd_diagnose.exe probe
+
+# Full IOCTL trace (will reset FPGA — LED may turn red):
+.\bin\x64\dmd_diagnose.exe trace
+```
+
+Build the diagnostic tool with:
+```powershell
+powershell -ExecutionPolicy Bypass -File build_diagnose.ps1
+```
+
+The debug guide covers:
+- Windows device/driver health checks
+- USB communication verification
+- ALP SDK error diagnosis
+- IOCTL-level USB traffic tracing
+- Known failure modes with signatures
+- Reference traces from working and failed hardware
