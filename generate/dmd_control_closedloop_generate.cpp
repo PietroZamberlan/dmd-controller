@@ -70,20 +70,6 @@ bool setupNamedPipe(HANDLE& hPipe) {
     }
     
     return true;
-
-
-    // cout << "Named pipe created. Waiting for Python client to connect..." << endl;
-    // // This call is blocking and will wait here until the client connects.
-    // bool connected = ConnectNamedPipe(hPipe, NULL);
-    // if (!connected && GetLastError() != ERROR_PIPE_CONNECTED) {
-    //     cout << "Client connection failed: " << GetLastError() << endl;
-    //     CloseHandle(hPipe);
-    //     hPipe = INVALID_HANDLE_VALUE;
-    //     return false;
-    // }
-    
-    // cout << "Python client connected." << endl;
-    // return true;
 }
 
 // Setup DMD device
