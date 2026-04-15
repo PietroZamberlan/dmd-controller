@@ -77,30 +77,30 @@ def main():
         print(f"\n{'File Size Verification':^60}")
         print("-" * 60)
         print(f"  Header size:        8 bytes")
-        print(f"  Expected data size: {expected_data_size:,} bytes ({info['width']}×{info['height']} pixels)")
+        print(f"  Expected data size: {expected_data_size:,} bytes ({info['width']}x{info['height']} pixels)")
         print(f"  Expected total:     {expected_file_size:,} bytes")
         print(f"  Actual file size:   {actual_file_size:,} bytes")
         print("-" * 60)
 
         if actual_file_size == expected_file_size:
-            print("  ✓ File size matches expected dimensions")
+            print("  [OK] File size matches expected dimensions")
         else:
             difference = actual_file_size - expected_file_size
-            print(f"  ✗ WARNING: File size mismatch!")
+            print(f"  [FAIL] WARNING: File size mismatch!")
             print(f"     Difference: {difference:+,} bytes")
 
         print()
         print(f"{'Comparison':^60}")
         print("-" * 60)
-        print(f"  Current dimensions: {info['width']}×{info['height']}")
-        print(f"  Expected (if 864×864): 864×864")
+        print(f"  Current dimensions: {info['width']}x{info['height']}")
+        print(f"  Expected (if 864x864): 864x864")
         print("-" * 60)
 
         if info['width'] == 864 and info['height'] == 864:
-            print("  ✓ Frame is 864×864 as expected")
+            print("  [OK] Frame is 864x864 as expected")
         else:
-            print(f"  ✗ Frame is NOT 864×864")
-            print(f"     To change to 864×864, modify create_initial_frame.py")
+            print(f"  [FAIL] Frame is NOT 864x864")
+            print(f"     To change to 864x864, modify create_initial_frame.py")
     else:
         print("\nFailed to read frame header")
 
