@@ -19,6 +19,7 @@ dmd-controller/
 ├── README.md                 # Human-readable setup/build guide
 ├── build_generate.ps1        # PowerShell build script for generate mode
 ├── build_diagnose.ps1        # PowerShell build script for diagnostic tool
+├── INVESTIGATION.md          # April 2026 ALP_ERROR_INIT hardware failure post-mortem
 ├── .gitignore
 │
 ├── inc/                      # C++ headers
@@ -47,7 +48,10 @@ dmd-controller/
 │   └── DMD_DEBUG_GUIDE.md   # Comprehensive DMD debugging guide (all levels)
 │
 ├── tools/                    # Helper scripts and diagnostic tools
-│   ├── dmd_diagnose.cpp      # C++ DMD diagnostic tool (USB probe, IOCTL tracing)
+│   ├── dmd_controller.py         # Python DMDController class (launches exe, manages pipe lifecycle)
+│   ├── onboarding.py             # Automated end-to-end DMD hardware test (no manual steps)
+│   ├── dmd_diagnose.cpp          # C++ DMD diagnostic tool (USB probe, IOCTL tracing)
+│   ├── ioctl_trace_2026-04-07.txt # Reference IOCTL trace from April 2026 investigation
 │   ├── example_python_client.py   # Demo: connect via pipe, send commands
 │   ├── create_initial_frame.py    # Creates initial current_frame.bin for startup
 │   └── inspect_frame_header.py    # Reads and validates frame file headers
@@ -279,6 +283,7 @@ RETRY_DELAY_MS = 40           // Wait between retries
 ```powershell
 # From the repo root:
 .\build_generate.ps1               # Builds generate mode → bin\x64\dmd_control_closedloop_generate.exe
+.\build_diagnose.ps1               # Builds diagnostic tool → bin\x64\dmd_diagnose.exe
 .\legacy\build_closedloop.ps1      # Builds archived closedloop mode → bin\x64\dmd_control_closedloop.exe
 ```
 
@@ -311,6 +316,40 @@ The Python side (`ClosedLoopProject/standalone_generate/run.py`) does this:
 
 **To point standalone_generate at this repo's build**, update the exe path in
 `standalone_generate/run.py` (search for `dmd_control_path` or the path to the .exe).
+
+## Python Tools (this repo)
+
+### DMDController class (`tools/dmd_controller.py`)
+
+A self-contained Python class that manages the full lifecycle of the C++ DMD process:
+1. Launches `dmd_control_closedloop_generate.exe` as a subprocess
+2. Connects to the named pipe (`\\.\pipe\DMDControlPipe`)
+3. Provides methods: `show_frame()`, `show_black()`, `show_white()`, `close()`
+4. Handles clean shutdown (QUIT via pipe, waits for process exit, closes pipe)
+
+Copied from `ClosedLoopProject/standalone_generate/dmd_controller.py` (commit `5cc4d5f`)
+so this repo can be used standalone without the full ClosedLoopProject repo.
+
+Has a `testmode` flag for running without hardware (simulates responses).
+
+**Known issue**: The docstring references `docs/DMD_PROTOCOL.md` which does not exist
+in this repo. The protocol is documented in this file under "Named Pipe Protocol" above.
+
+### Onboarding test (`tools/onboarding.py`)
+
+Automated end-to-end DMD hardware test. One command, no manual steps:
+```powershell
+python tools\onboarding.py
+```
+
+What it does:
+1. Creates an initial frame file (`current_frame.bin`)
+2. Launches the C++ exe via DMDController
+3. Cycles through 5 test patterns (horizontal, vertical, checkerboard, circle, random)
+4. Tests BLACK and WHITE pipe commands
+5. Shuts down cleanly
+
+Requires: built exe (`.\build_generate.ps1` first), `pywin32`, `numpy`.
 
 ## Common Modifications
 
@@ -377,3 +416,10 @@ The debug guide covers:
 - IOCTL-level USB traffic tracing
 - Known failure modes with signatures
 - Reference traces from working and failed hardware
+
+### Hardware Failure Reference
+
+For a real-world ALP_ERROR_INIT (1010) failure investigation from April 2026,
+see **`INVESTIGATION.md`**. Documents 13 hypotheses tested, IOCTL-level USB traces,
+and the conclusion (FPGA firmware failure requiring ViALUX RMA). Contains reference
+traces from both working (SN_04_01_1685) and failed (SN_04_01_1689) hardware.

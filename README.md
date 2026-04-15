@@ -54,6 +54,15 @@ The controller will:
 python tools\example_python_client.py
 ```
 
+### Automated test (recommended for first-time setup)
+
+```powershell
+python tools\onboarding.py
+```
+
+Launches the C++ process, connects via named pipe, cycles through 5 test patterns,
+tests BLACK/WHITE commands, and shuts down cleanly. No manual steps required.
+
 ## Projects
 
 | Project | Directory | Description |
@@ -69,6 +78,16 @@ python tools\example_python_client.py
 | `alpD41.lib not found` | Verify `lib\x64\alpD41.lib` exists |
 | `ALP_NOT_ONLINE` (runtime) | DMD hardware not connected or driver not installed |
 | `Failed to open initial frame file` | Run `python tools\create_initial_frame.py` first |
+
+For deeper hardware diagnostics (USB probe, IOCTL tracing), build and run the
+diagnostic tool:
+
+```powershell
+.\build_diagnose.ps1
+.\bin\x64\dmd_diagnose.exe probe
+```
+
+See `docs/DMD_DEBUG_GUIDE.md` for the full step-by-step diagnostic procedure.
 
 ## Integration with standalone_generate
 
@@ -91,5 +110,9 @@ The Python side writes `current_frame.bin` to the same directory as the .exe, th
 
 ## Documentation
 
-- **`CLAUDE.md`** - Detailed technical reference (architecture, protocols, ALP SDK, build details)
-- **`README.md`** - This file (setup and usage)
+| File | Description |
+|------|-------------|
+| **`README.md`** | This file -- setup, build, and usage guide |
+| **`CLAUDE.md`** | Deep technical reference (architecture, named pipe protocol, ALP SDK, build internals) |
+| **`docs/DMD_DEBUG_GUIDE.md`** | Step-by-step DMD debugging guide (driver checks, USB probe, IOCTL tracing) |
+| **`INVESTIGATION.md`** | April 2026 post-mortem: ALP_ERROR_INIT (1010) hardware failure analysis |
