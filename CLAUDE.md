@@ -18,30 +18,27 @@ dmd-controller/
 ├── CLAUDE.md                 # THIS FILE - codebase guide for AI sessions
 ├── README.md                 # Human-readable setup/build guide
 ├── build_generate.ps1        # PowerShell build script for generate mode
-├── build_closedloop.ps1      # PowerShell build script for closedloop mode
+├── build_diagnose.ps1        # PowerShell build script for diagnostic tool
 ├── .gitignore
 │
-├── inc/                      # C++ headers (shared across projects)
-│   ├── alp.h                # ViALUX ALP SDK header (485 lines) - DMD hardware API
-│   └── dirent.h             # POSIX directory API for Windows
+├── inc/                      # C++ headers
+│   └── alp.h                # ViALUX ALP SDK header (485 lines) - DMD hardware API
 │
 ├── lib/x64/                  # Pre-built 64-bit libraries (proprietary, from ViALUX)
 │   ├── alpD41.dll           # Runtime DLL - MUST be next to .exe at runtime
-│   ├── alpD41.lib           # Import library - linked at compile time
-│   └── alpV42.lib           # Alternative V4.2 version (not currently used)
+│   └── alpD41.lib           # Import library - linked at compile time
 │
 ├── generate/                 # ACTIVE PROJECT - online frame generation mode
-│   ├── dmd_control_closedloop_generate.cpp  # Main source (~1215 lines)
-│   ├── stdafx.h             # Precompiled header (includes iostream, Windows.h, etc.)
-│   ├── stdafx.cpp           # Precompiled header impl
-│   ├── targetver.h          # Windows SDK version targeting
-│   ├── utils.h              # Utility function declarations
-│   └── utils.cpp            # CreateFrames() - checkerboard helper (not used by generate)
+│   ├── dmd_control_closedloop_generate.cpp  # Main source (~1200 lines)
+│   ├── stdafx.h             # Standard system/project includes (iostream, Windows.h, alp.h)
+│   ├── stdafx.cpp           # stdafx companion (legacy VS template)
+│   └── targetver.h          # Windows SDK version targeting
 │
-├── closedloop/               # REFERENCE PROJECT - pre-loaded sequence mode
-│   ├── dmd_control_closedloop.cpp  # Main source (~1200 lines)
-│   ├── stdafx.h, stdafx.cpp, targetver.h, utils.h, utils.cpp
-│   └── (same structure as generate/ but loads frames from large .bin files)
+├── legacy/                   # Archived projects (kept buildable for reference)
+│   ├── build_closedloop.ps1  # Build script for archived closedloop mode
+│   └── closedloop/           # ARCHIVED - pre-loaded sequence mode (superseded by generate)
+│       ├── dmd_control_closedloop.cpp  # Main source (~1200 lines)
+│       └── stdafx.h, stdafx.cpp, targetver.h, utils.h, utils.cpp
 │
 ├── bin/x64/                  # Build output directory (gitignored except .gitkeep)
 │   └── .gitkeep
@@ -65,10 +62,11 @@ dmd-controller/
 - C++ reads the .bin file, uploads to DMD, queues for display
 - Frame file is small (~746 KB for 864x864)
 
-### Closedloop/Sequence Mode (REFERENCE - `closedloop/`)
+### Closedloop/Sequence Mode (ARCHIVED - `legacy/closedloop/`)
 - Older approach: loads ALL frames from a massive pre-generated .bin file at startup
 - The .bin files are 2+ GB and NOT included in this repo
-- Kept for reference; generate mode supersedes it
+- Archived in `legacy/`; generate mode supersedes it. Still buildable via
+  `.\legacy\build_closedloop.ps1` if needed.
 
 ## Architecture: Generate Mode In Detail
 
@@ -280,8 +278,8 @@ RETRY_DELAY_MS = 40           // Wait between retries
 ### Building
 ```powershell
 # From the repo root:
-.\build_generate.ps1       # Builds generate mode → bin\x64\dmd_control_closedloop_generate.exe
-.\build_closedloop.ps1     # Builds closedloop mode → bin\x64\dmd_control_closedloop.exe
+.\build_generate.ps1               # Builds generate mode → bin\x64\dmd_control_closedloop_generate.exe
+.\legacy\build_closedloop.ps1      # Builds archived closedloop mode → bin\x64\dmd_control_closedloop.exe
 ```
 
 The build scripts:

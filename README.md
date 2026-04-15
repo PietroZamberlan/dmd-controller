@@ -59,7 +59,7 @@ python tools\example_python_client.py
 | Project | Directory | Description |
 |---------|-----------|-------------|
 | **generate** | `generate/` | Online frame generation mode (ACTIVE). Python writes frames to a .bin file and sends SHOW_FRAME commands via named pipe. |
-| **closedloop** | `closedloop/` | Pre-loaded sequence mode (REFERENCE). Loads all frames from a large .bin file at startup. |
+| **closedloop** | `legacy/closedloop/` | Pre-loaded sequence mode (ARCHIVED). Loads all frames from a large .bin file at startup. Build with `.\legacy\build_closedloop.ps1`. |
 
 ## Build Troubleshooting
 
