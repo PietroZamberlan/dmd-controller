@@ -29,12 +29,12 @@ if ($null -eq $vsPath) {
 
 Write-Host "Found Visual Studio at: $vsPath" -ForegroundColor Green
 
-# Resolve repo root directory (where this script lives)
-$repoDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+# Resolve repo root directory (this script lives in legacy/, so go up one level)
+$repoDir = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Write-Host "Repository root: $repoDir" -ForegroundColor Gray
 
 # Paths relative to repo root
-$sourceDir = Join-Path $repoDir "closedloop"
+$sourceDir = Join-Path $repoDir "legacy\closedloop"
 $includeDir = Join-Path $repoDir "inc"
 $libDir = Join-Path $repoDir "lib\x64"
 $outputDir = Join-Path $repoDir "bin\x64"
