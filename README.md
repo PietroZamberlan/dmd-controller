@@ -8,95 +8,64 @@ neuroscience experiments. Communicates with a Python orchestration layer via Win
 1. **Visual Studio Build Tools 2022** (lightweight, no IDE needed)
    - Download "Build Tools for Visual Studio 2022" from https://visualstudio.microsoft.com/downloads/
      (scroll down to "Tools for Visual Studio" section)
-   - In the installer, select the **"Desktop development with C++"** workload
-   - This provides `cl.exe` (C++ compiler), the linker, and the Windows SDK (~2-4 GB)
-   - Full Visual Studio is NOT required — Build Tools alone are sufficient
+   - Select the **"Desktop development with C++"** workload
+   - Full Visual Studio is NOT required -- Build Tools alone are sufficient
 
-2. **Windows 10 SDK** (included with the C++ workload above)
-
-3. **ViALUX DMD hardware** physically connected via USB
+2. **ViALUX DMD hardware** physically connected via USB
    - The ALP SDK libraries (`alpD41.dll`, `alpD41.lib`) are already included in `lib/x64/`
 
-4. **Python 3.11+** with `pywin32` and `numpy` (only needed for helper tools)
+3. **Python 3.11+** with `pywin32` and `numpy` (for the Python tools)
 
 ## Quick Start
 
-### Build
-
 ```powershell
-# Open PowerShell in the repo root
-.\build_generate.ps1
+.\build_generate.ps1          # Build the C++ exe
+python tools\onboarding.py    # Run the automated hardware test
 ```
 
-This produces `bin\x64\dmd_control_closedloop_generate.exe` and copies the required
-`alpD41.dll` alongside it.
+The onboarding script handles everything: creates an initial frame file, launches the
+C++ process, connects to the named pipe, displays 5 test patterns (horizontal stripes,
+vertical stripes, checkerboard, circle, random noise), tests BLACK and WHITE commands,
+and shuts down cleanly.
 
-### Run
+## How It Works
 
-```powershell
-# Create an initial frame file (required before first run)
-python tools\create_initial_frame.py
+The C++ process runs continuously, displaying a gray background by default. Python
+controls it through two channels:
 
-# Launch the DMD controller
-.\bin\x64\dmd_control_closedloop_generate.exe
-```
+- **Frame file** (`bin\x64\current_frame.bin`): 8-byte header (width, height, count,
+  bit depth as 4 shorts) followed by raw pixel data (864x864 bytes, 8-bit grayscale).
+  Python writes this file before each display command.
 
-The controller will:
-1. Initialize the DMD device
-2. Create a named pipe (`\\.\pipe\DMDControlPipe`)
-3. Wait for a Python client to connect (press `y` to skip)
-4. Enter the main loop displaying gray background
+- **Named pipe** (`\\.\pipe\DMDControlPipe`): carries commands and responses.
 
-### Test with Python client
+| Command | Response | Effect |
+|---------|----------|--------|
+| `SHOW_FRAME` | `SHOW_FRAME_STARTED:<n>` | Read `current_frame.bin`, display on DMD |
+| `BLACK` | `BLACK_STARTED:<n>` | Display black |
+| `WHITE` | `WHITE_STARTED:<n>` | Display white |
+| `QUIT` | (none) | Shut down cleanly |
 
-```powershell
-# In a separate terminal, while the C++ program is running:
-python tools\example_python_client.py
-```
+`<n>` is the DMD's internal frame counter at the moment the stimulus started,
+used for synchronization with MEA acquisition.
 
-### Automated test (recommended for first-time setup)
+After each stimulus, the C++ process automatically queues several gray background
+sequences before accepting the next frame:
+**gray > stimulus > gray > gray > gray > gray > next stimulus**.
 
-```powershell
-python tools\onboarding.py
-```
+## Python Tools
 
-Launches the C++ process, connects via named pipe, cycles through 5 test patterns,
-tests BLACK/WHITE commands, and shuts down cleanly. No manual steps required.
+| Tool | Description |
+|------|-------------|
+| `tools/onboarding.py` | Automated end-to-end hardware test (see Quick Start) |
+| `tools/dmd_controller.py` | `DMDController` class -- launches the C++ exe, manages pipe and process lifecycle. Copied from `ClosedLoopProject/standalone_generate/` (commit `5cc4d5f`) |
+| `tools/example_python_client.py` | Standalone demo using raw pipe calls (requires manually starting the C++ exe first) |
+| `tools/create_initial_frame.py` | Creates an initial `current_frame.bin` (interactive, choose pattern) |
+| `tools/inspect_frame_header.py` | Reads and validates frame file headers |
 
-## Projects
-
-| Project | Directory | Description |
-|---------|-----------|-------------|
-| **generate** | `generate/` | Online frame generation mode (ACTIVE). Python writes frames to a .bin file and sends SHOW_FRAME commands via named pipe. |
-| **closedloop** | `legacy/closedloop/` | Pre-loaded sequence mode (ARCHIVED). Loads all frames from a large .bin file at startup. Build with `.\legacy\build_closedloop.ps1`. |
-
-## Build Troubleshooting
-
-| Error | Solution |
-|-------|----------|
-| `cl.exe not found` | Install "Build Tools for Visual Studio 2022" with "Desktop development with C++" workload |
-| `alpD41.lib not found` | Verify `lib\x64\alpD41.lib` exists |
-| `ALP_NOT_ONLINE` (runtime) | DMD hardware not connected or driver not installed |
-| `Failed to open initial frame file` | Run `python tools\create_initial_frame.py` first |
-
-For deeper hardware diagnostics (USB probe, IOCTL tracing), build and run the
-diagnostic tool:
-
-```powershell
-.\build_diagnose.ps1
-.\bin\x64\dmd_diagnose.exe probe
-```
-
-See `docs/DMD_DEBUG_GUIDE.md` for the full step-by-step diagnostic procedure.
-
-## Integration with standalone_generate
-
-This controller is designed to work with `ClosedLoopProject/standalone_generate/run.py`.
-To connect them, update the DMD executable path in `standalone_generate/run.py` to point to
-this repo's `bin\x64\dmd_control_closedloop_generate.exe`.
-
-The Python side writes `current_frame.bin` to the same directory as the .exe, then sends
-`SHOW_FRAME` via the named pipe. See `CLAUDE.md` for full protocol documentation.
+The onboarding script and `DMDController` launch the C++ process automatically.
+The example client does not -- start the exe manually first, then run the client
+in a separate terminal.
 
 ## Keyboard Controls (when running without Python client)
 
@@ -108,11 +77,41 @@ The Python side writes `current_frame.bin` to the same directory as the .exe, th
 | `q` | Quit |
 | `y` | Skip waiting for Python client connection |
 
+## Integration with standalone_generate
+
+This controller is designed to work with `ClosedLoopProject/standalone_generate/run.py`.
+Update the DMD executable path in `run.py` to point to
+`bin\x64\dmd_control_closedloop_generate.exe` in this repo.
+
+## Projects
+
+| Project | Directory | Description |
+|---------|-----------|-------------|
+| **generate** | `generate/` | Online frame generation (ACTIVE). Python writes frames to a .bin file and sends pipe commands. |
+| **closedloop** | `legacy/closedloop/` | Pre-loaded sequence mode (ARCHIVED). Build with `.\legacy\build_closedloop.ps1`. |
+
+## Build Troubleshooting
+
+| Error | Solution |
+|-------|----------|
+| `cl.exe not found` | Install Build Tools with "Desktop development with C++" workload |
+| `alpD41.lib not found` | Verify `lib\x64\alpD41.lib` exists |
+| `ALP_NOT_ONLINE` (runtime) | DMD hardware not connected or driver not installed |
+| `Failed to open initial frame file` | Run `python tools\create_initial_frame.py` first |
+
+For hardware init failures, build and run the diagnostic tool:
+
+```powershell
+.\build_diagnose.ps1
+.\bin\x64\dmd_diagnose.exe probe
+```
+
+See `docs/DMD_DEBUG_GUIDE.md` for the full diagnostic procedure.
+
 ## Documentation
 
 | File | Description |
 |------|-------------|
-| **`README.md`** | This file -- setup, build, and usage guide |
-| **`CLAUDE.md`** | Deep technical reference (architecture, named pipe protocol, ALP SDK, build internals) |
-| **`docs/DMD_DEBUG_GUIDE.md`** | Step-by-step DMD debugging guide (driver checks, USB probe, IOCTL tracing) |
-| **`INVESTIGATION.md`** | April 2026 post-mortem: ALP_ERROR_INIT (1010) hardware failure analysis |
+| `CLAUDE.md` | Technical reference (architecture, ALP SDK, build internals, timing constants) |
+| `docs/DMD_DEBUG_GUIDE.md` | DMD debugging guide (driver checks, USB probe, IOCTL tracing) |
+| `INVESTIGATION.md` | April 2026 post-mortem: ALP_ERROR_INIT (1010) hardware failure |

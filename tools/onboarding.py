@@ -7,8 +7,8 @@ launches the C++ process, connects, cycles through test patterns, tests
 BLACK/WHITE commands, and shuts down cleanly.
 
 Usage:
-    1. Build the C++ exe first:  .\build_generate.ps1
-    2. Run:  python tools\onboarding.py
+    1. Build the C++ exe first:  .\\build_generate.ps1
+    2. Run:  python tools\\onboarding.py
 
 No manual steps required -- the script handles everything including
 creating the initial frame file and launching the C++ process.
